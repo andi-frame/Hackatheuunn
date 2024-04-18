@@ -10,6 +10,7 @@ function Explore() {
         <Category name="Fairy Tail"></Category>
         <Category name="Science"></Category>
       </div>
+      {/* Make new components for cards below */}
       <h3>Fairy Tail</h3>
       <div className="flex gap-6 overflow-auto">
         <Card title="Book Title" likes="100" genre="Fairy" img="src\assets\card_img.png" />
