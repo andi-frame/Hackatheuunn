@@ -2,7 +2,7 @@ import { TbPointFilled } from "react-icons/tb";
 
 function Card(Props) {
   return (
-    <div className="h-48 w-40 rounded-3xl bg-[#F3F3F3] overflow-hidden my-5">
+    <div className="h-48 w-40 rounded-3xl bg-[#F3F3F3] overflow-hidden my-5 flex-none">
       <div>
         <img className="h-28 w-full" src={Props.img} alt={"Gambar " + Props.title} />
       </div>
