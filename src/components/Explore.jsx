@@ -1,4 +1,5 @@
 import Category from "./Category";
+import Card from "./Card";
 
 function Explore() {
   return (
@@ -8,6 +9,10 @@ function Explore() {
         <Category name="All"></Category>
         <Category name="Fairy Tail"></Category>
         <Category name="Science"></Category>
+      </div>
+      <h3>Fairy Tail</h3>
+      <div className="flex gap-5">
+        <Card title="Book Title" likes="100" genre="Fairy" img="src\assets\card_img.png" />
       </div>
     </div>
   );
