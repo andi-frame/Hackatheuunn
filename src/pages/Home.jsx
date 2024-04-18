@@ -10,6 +10,7 @@ function Home() {
       <Header></Header>
       <Greatings></Greatings>
       <Insights></Insights>
+      <hr />
       <Explore></Explore>
       <Menu></Menu>
     </>
