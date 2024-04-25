@@ -1,10 +1,23 @@
 // import React, { useState } from "react";
+import Book from "./pages/Book";
 import Home from "./pages/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  { 
+    path: "/", 
+    element: <Home /> 
+  },
+  { 
+    path: "/book/:id", 
+    element: <Book /> 
+  },
+]);
 
 function App() {
   return (
     <>
-      <Home></Home>
+      <RouterProvider router={router} />
     </>
   );
 }
