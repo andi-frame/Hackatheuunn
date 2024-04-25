@@ -1,5 +1,5 @@
 // import React, { useState } from "react";
-import Book from "./pages/Book";
+import BookPage from "./pages/BookPage";
 import Home from "./pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const router = createBrowserRouter([
   },
   { 
     path: "/book/:id", 
-    element: <Book /> 
+    element: <BookPage /> 
   },
 ]);
 
