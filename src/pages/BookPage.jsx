@@ -2,17 +2,15 @@ import { HiSpeakerWave } from "react-icons/hi2";
 import { FaPen } from "react-icons/fa6";
 import HeaderBook from "../components/HeaderBook";
 import Book from "../components/Book";
-import PageBookCounter from "../components/PageBookCounter";
 
 function BookPage() {
   return (
-    <div>
+    <div className="flex flex-col">
       <HeaderBook />
       <div className="relative h-[462px]">
         <Book />
       </div>
-      <PageBookCounter />
-      <div className="flex gap-3 justify-evenly items-center mt-3">
+      <div className="flex gap-3 justify-evenly items-center mt-14">
         <div className="rounded-xl bg-green-300 w-[120px] h-[48px] flex justify-center items-center">
           <HiSpeakerWave className="text-[35px]" />
         </div>
