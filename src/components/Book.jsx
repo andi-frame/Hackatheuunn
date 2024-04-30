@@ -8,7 +8,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 import contoh_buku1 from "../assets/books/buku-ilustrasi-anak_lumba-lumba.pdf";
 import contoh_buku2 from "../assets/books/74._Isi_dan_Sampul_Kalah_oleh_Si_Cerdik.pdf";
-
+import pdf_to_image from "../utility/pdf_to_image";
 
 // Setup react-pdf
 pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.js", import.meta.url).toString();
@@ -64,50 +64,3 @@ function Book() {
 }
 
 export default Book;
-
-// --FIRST METHOD--
-// Use iframe to load comics from pendidikan.id
-// <iframe
-//   className="w-full h-full border-0 "
-//   title="Komik Pra Sekolah - Belajar Membaca"
-//   src={`https://komik.pendidikan.id/online/komik/belajar_membaca/`}
-//   type="text/html"
-//   allowFullScreen="true">
-// </iframe>;
-
-// --SECOND METHOD--
-// Use @cyntler/react-doc-viewer package
-// // Doc Viewer
-// import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
-// const [url, setUrl] = useState(contoh_komik);
-
-// const docs = [
-//   { uri: url }, // Local File
-// ];
-
-// const docViewerConfig = {
-//   header: {
-//     disableHeader: true,
-//     retainURLParams: false,
-//   },
-//   pdfZoom: {
-//     defaultZoom: 1.4, // 1 as default,
-//   },
-// };
-
-// const [viewerKey, setViewerKey] = React.useState(0); //Viewer key state
-
-// React.useEffect(() => {
-//   setViewerKey((prevKey) => prevKey + 1); // update the viewer key when url changes(re-renders when url changes)
-// }, [url]);
-
-{
-  /* <DocViewer
-  documents={docs}
-  key={viewerKey}
-  initialActiveDocument={docs[0]}
-  pluginRenderers={DocViewerRenderers}
-  config={docViewerConfig}
-  currentPageNumber={pageNumber}
-/>; */
-}
