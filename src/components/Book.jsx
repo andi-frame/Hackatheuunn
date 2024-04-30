@@ -6,7 +6,7 @@ import { pdfjs } from "react-pdf";
 import { Document, Page } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
-import useWindowDimensions from "../utility/useWindowDimensions";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import contoh_buku1 from "../assets/books/buku-ilustrasi-anak_lumba-lumba.pdf";
 import contoh_buku2 from "../assets/books/74._Isi_dan_Sampul_Kalah_oleh_Si_Cerdik.pdf";
 
@@ -40,7 +40,7 @@ function Book() {
     <div className="relative">
       {/* --BOOK FILE VIEWER-- */}
       <div className="w-10/12 h-full mx-auto flex items-center justify-center overflow-hidden rounded-2xl bg-green-300">
-        <Document file={contoh_buku2} onLoadSuccess={onDocumentLoadSuccess} className="flex items-center justify-center">
+        <Document file={contoh_buku1} onLoadSuccess={onDocumentLoadSuccess} className="flex items-center justify-center">
           <Page pageNumber={pageNumber} width={width * 0.8} className="rounded-2xl overflow-hidden" />
         </Document>
       </div>
