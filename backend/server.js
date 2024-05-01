@@ -1,10 +1,17 @@
 import Express from "express";
 import PDFImage from "pdf-image";
+import "dotenv/config";
+import mongoose from "mongoose";
 
 const app = Express();
+const PORT = process.env.PORT;
+const MONGODB_URI = process.env.MONGODB_URI;
 
-app.get("/pdftoimage/:path/:pageNumber", function (req, res) {
-  var pdfPath = req.params.path;
+mongoose.connect(MONGODB_URI);
+
+app.get("/pdftoimage/:fileName/:pageNumber", function (req, res) {
+  var fileName = req.params.fileName;
+  var pdfPath = `/`;
   var pageNumber = req.params.pageNumber;
 
   var pdfImage = new PDFImage(pdfPath);
@@ -19,7 +26,6 @@ app.get("/pdftoimage/:path/:pageNumber", function (req, res) {
   );
 });
 
-const PORT = 5000 || process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);
 });
