@@ -1,4 +1,4 @@
-import BookModel from "../models/BookModel";
+import BookModel from "../models/BookModel.js";
 
 const index = async (req, res) => {
   BookModel.find()
@@ -34,6 +34,7 @@ const store = (req, res) => {
     title: req.body.title,
     author: req.body.author,
     genre: req.body.genre,
+    filePath: req.body.filePath,
   });
   book
     .save()
@@ -85,11 +86,4 @@ const destroy = (req, res) => {
     });
 };
 
-// eslint-disable-next-line no-undef
-module.exports = {
-  index,
-  show,
-  store,
-  update,
-  destroy,
-};
+export default { index, show, store, update, destroy };

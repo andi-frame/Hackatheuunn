@@ -24,5 +24,5 @@ const bookSchema = new Schema(
   { timestamps: true }
 );
 
-// eslint-disable-next-line no-undef
-module.exports = mongoose.model("BookModel", bookSchema);
+const BookModel = mongoose.model("BookModel", bookSchema);
+export default BookModel;

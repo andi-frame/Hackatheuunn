@@ -24,5 +24,4 @@ const upload = multer({
   limits: { fieldSize: maxFileSize },
 });
 
-// eslint-disable-next-line no-undef
-module.exports = upload;
+export default upload;
