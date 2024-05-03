@@ -34,7 +34,7 @@ const store = (req, res) => {
     title: req.body.title,
     author: req.body.author,
     genre: req.body.genre,
-    filePath: req.body.filePath,
+    file: req.file.path,
   });
   book
     .save()

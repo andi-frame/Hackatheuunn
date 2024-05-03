@@ -16,7 +16,7 @@ const bookSchema = new Schema(
       type: String,
       required: true,
     },
-    filePath: {
+    file: {
       type: String,
       required: true,
     },
