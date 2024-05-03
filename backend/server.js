@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/book", bookRoutes);
-
 app.use("/api", pdfToTextRoute);
 
 app.listen(PORT, () => {
