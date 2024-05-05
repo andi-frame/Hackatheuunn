@@ -29,5 +29,6 @@ export const convertTextToAudio = async (text) => {
     })
     .then((res) => {
       res.pipe(fileWriteStream);
+      console.log("Convert audio successfully!");
     });
 };

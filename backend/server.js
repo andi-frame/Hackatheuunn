@@ -3,7 +3,8 @@ import bodyParser from "body-parser";
 import "dotenv/config";
 import mongoose from "mongoose";
 import bookRoutes from "./routes/bookRoutes.js";
-import pdfToTextRoute from "./routes/pdfToTextRoute.js";
+import pdfToAudioRoute from "./routes/pdfToAudioRoute.js";
+import askOpenaiRoute from "./routes/askOpenaiRoute.js";
 
 const app = Express();
 const PORT = process.env.PORT;
@@ -14,7 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/book", bookRoutes);
-app.use("/api", pdfToTextRoute);
+app.use("/api", pdfToAudioRoute);
+app.use("/api", askOpenaiRoute);
 
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);
