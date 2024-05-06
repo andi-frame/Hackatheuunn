@@ -1,36 +1,78 @@
 import { useState, useEffect } from "react";
 import "regenerator-runtime/runtime";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const mic = new SpeechRecognition();
+
+mic.continuous = true;
+mic.interimResults = true;
+mic.lang = "id";
 
 function Mic() {
-  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
-  const [onListening, setOnListening] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [note, setNote] = useState(null);
+  const [savedNotes, setSavedNotes] = useState([]);
+
   useEffect(() => {
-    if (listening) {
-      setOnListening(true);
+    handleListen();
+  }, [isListening]);
+
+  const handleListen = () => {
+    if (isListening) {
+      mic.start();
+      mic.onend = () => {
+        console.log("continue..");
+        mic.start();
+      };
     } else {
-      setOnListening(false);
+      mic.stop();
+      mic.onend = () => {
+        console.log("Stopped Mic on Click");
+      };
     }
-  }, [listening]);
+    mic.onstart = () => {
+      console.log("Mics on");
+    };
 
-  function clickStartListening() {
-    SpeechRecognition.startListening({ language: "id" });
-  }
+    mic.onresult = (event) => {
+      const transcript = Array.from(event.results)
+        .map((result) => result[0])
+        .map((result) => result.transcript)
+        .join("");
+      console.log(transcript);
+      setNote(transcript);
+      mic.onerror = (event) => {
+        console.log(event.error);
+      };
+    };
+  };
 
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser does not support speech recognition.</span>;
-  }
+  const handleSaveNote = () => {
+    setSavedNotes([...savedNotes, note]);
+    setNote("");
+  };
 
   return (
-    <div className="flex flex-col items-center my-3">
-      <p>Microphone: {onListening ? "On" : "Off"}</p>
-      <div className="flex justify-center gap-5">
-        <button onClick={clickStartListening}>Start</button>
-        <button onClick={SpeechRecognition.abortListening}>Stop</button>
-        <button onClick={resetTranscript}>Reset</button>
+    <>
+      <h1>Voice Notes</h1>
+      <div className="">
+        <div className="flex flex-col justify-center items-center">
+          <h2>Current Note</h2>
+          {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
+          <button onClick={handleSaveNote} disabled={!note}>
+            Save Note
+          </button>
+          <button onClick={() => setIsListening((prevState) => !prevState)}>Start/Stop</button>
+          <p>{note}</p>
+        </div>
+        <div className="">
+          <h2>Notes</h2>
+          {savedNotes.map((n) => (
+            <p key={n}>{n}</p>
+          ))}
+        </div>
       </div>
-      <p>{transcript}</p>
-    </div>
+    </>
   );
 }
+
 export default Mic;
