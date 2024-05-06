@@ -7,6 +7,7 @@ const router = Express.Router();
 router.post("/pdftoaudio", async (req, res) => {
   try {
     const text = await convertPdfToText("./books/buku-ilustrasi-anak_lumba-lumba.pdf");
+    console.log(text);
     await convertTextToAudio(text);
     res.send(text);
   } catch (error) {
