@@ -7,6 +7,8 @@ export async function transcribeAudio(filename) {
     // Initialize the OpenAI client with the given API key.
     const apiKey = process.env.OPENAI_API_KEY;
     const openAiClient = new OpenAI({ apiKey });
+    // const openAiClient = new OpenAI();
+
 
     // Send the audio file for transcription using the specified model.
     console.log("Start transcribing...");
